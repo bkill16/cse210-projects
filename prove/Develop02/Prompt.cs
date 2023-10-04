@@ -6,6 +6,9 @@ public class Prompt{
         "How did I see the hand of the Lord in my life today?",
         "What was the strongest emotion I felt today?",
         "If I had one thing I could do over today, what would it be?",
+        "What was the funniest thing that happened today?",
+        "What was the best thing that I ate today?",
+        "What made me smile today?",
     };
 
     public List<string> _writingPrompt = new List<string>(_prompt);
