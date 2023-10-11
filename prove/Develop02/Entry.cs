@@ -6,9 +6,6 @@ public class Entry
     public string _writingPrompt = "";
     public string _journalEntry = "";
 
-    public Entry()
-    {}
-
     public void Display()
     {
         Console.WriteLine($"\n{_currentDate}");

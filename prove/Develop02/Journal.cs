@@ -7,9 +7,6 @@ public class Journal
     public List<Entry> _journal = new List<Entry>();
     private string _fileName;
 
-    public Journal()
-    {}
-
     public void Display()
     {
         Console.WriteLine("\nEntries:");
