@@ -15,7 +15,6 @@ public class Word
     public void Hide()
     {
         _isHidden = true;
-        _hiddenWord = Regex.Replace(_hiddenWord, @"[a-zA-Z]", "_");
     }
 
     public bool IsHidden()
@@ -27,7 +26,8 @@ public class Word
     {
         if (_isHidden)
         {
-            return new string('_', _hiddenWord.Length);
+            _hiddenWord = Regex.Replace(_hiddenWord, @"[a-zA-Z]", "_");
+            return _hiddenWord;
         }
         else
         {
