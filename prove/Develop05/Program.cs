@@ -13,7 +13,8 @@ class Program
 
         while (choice != "6")
         {
-            Console.WriteLine($"\nYou have {_totalPoints} points.");
+            Console.WriteLine();
+            goal.DisplayTotalPoints();
             Console.WriteLine("\nMenu Options:");
             Console.WriteLine(" 1. Create New Goal");
             Console.WriteLine(" 2. List Goals");
@@ -71,7 +72,7 @@ class Program
 
                 // Record event
                 case "5":
-                    
+                    goal.RecordEvent();
                     break;
 
                 // Quit

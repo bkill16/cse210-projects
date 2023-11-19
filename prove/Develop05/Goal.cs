@@ -1,3 +1,5 @@
+using System.Collections;
+
 public class Goal
 {
     protected string _goalChoice;
@@ -114,7 +116,7 @@ public class Goal
         if (File.Exists(_fileName))
         {
             Console.WriteLine("This file already exists.");
-            UpdateFile(_fileName);
+            SaveFile(_fileName);
             Console.WriteLine("Goals have been saved.");
         }
 
@@ -125,6 +127,11 @@ public class Goal
             SaveFile(_fileName);
             Console.WriteLine("Goals have been saved.");
         }
+    }
+
+    public string GetFileName()
+    {
+        return _fileName;
     }
 
     public virtual string Serialize()
@@ -140,19 +147,6 @@ public class Goal
     public void SaveFile(string _fileName)
     {
         using (StreamWriter sw = new StreamWriter(_fileName))
-        {
-            sw.WriteLine($"{_totalPoints}");
-
-            foreach (Goal goal in goalsList)
-            {
-                sw.WriteLine($"{goal.GetType().Name}:{goal.SerializeForUpdate()}");
-            }
-        }
-    }
-
-    public void UpdateFile(string _fileName)
-    {
-        using (StreamWriter sw = new StreamWriter(_fileName, append: true))
         {
             sw.WriteLine($"{_totalPoints}");
 
@@ -236,4 +230,57 @@ public class Goal
         loadedGoal.LoadGoalFromData(goalInfo);
         return loadedGoal;
     }
+
+    public void RecordEvent()
+    {
+        Console.Write("\nEnter goal name: ");
+        string recordedGoal = Console.ReadLine();
+
+        Goal selectedGoal = goalsList.Find(g => g.GetName() == recordedGoal);
+
+        if (selectedGoal != null)
+        {
+            Console.WriteLine($"{selectedGoal.GetName()} goal selected");
+
+            switch (selectedGoal.GetType().Name)
+            {
+                case "Simple":
+                    ((Simple)selectedGoal).RecordEventSimple();
+                    break;
+            }
+        }
+        else
+        {
+            Console.WriteLine("Goal not found");
+        }
+    }
+
+    public void DisplayTotalPoints()
+    {
+        if (File.Exists(_fileName))
+        {
+            string[] lines = File.ReadAllLines(_fileName);
+
+            if (lines.Length > 0)
+            {
+                if (int.TryParse(lines[0], out int totalPoints))
+                {
+                    Console.WriteLine($"You have {totalPoints} points");
+                }
+                else
+                {
+                    Console.WriteLine("Error parsing total points.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("File is empty.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("You have 0 points");
+        }
+    }
+
 }
