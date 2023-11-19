@@ -1,3 +1,0 @@
-20
-Simple:goal1,test,10,True
-Eternal:goal2,test,10

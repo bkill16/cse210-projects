@@ -250,6 +250,9 @@ public class Goal
                 case "Eternal":
                     ((Eternal)selectedGoal).RecordEventEternal();
                     break;
+                case "Checklist":
+                    ((Checklist)selectedGoal).RecordEventChecklist();
+                    break;
             }
         }
         else

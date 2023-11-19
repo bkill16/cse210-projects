@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.InteropServices;
 
@@ -26,7 +27,7 @@ public class Checklist : Goal
 
     public override string FormatGoal()
     {
-        return $"{base.FormatGoal()} - Currently Completed PLACEHOLDER/{_target}";
+        return $"{base.FormatGoal()} - Currently Completed {_timesCompleted}/{_target}";
     }
 
     public override void LoadGoalFromData(string[] goalInfo)
@@ -37,7 +38,7 @@ public class Checklist : Goal
         {
             _bonus = int.Parse(goalInfo[3]);
             _target = int.Parse(goalInfo[4]);
-            _timesCompleted = int.Parse(goalInfo[5]);  // Uncomment if you need this property
+            _timesCompleted = int.Parse(goalInfo[5]);
         }
     }
 
@@ -49,5 +50,33 @@ public class Checklist : Goal
     public override string SerializeForUpdate()
     {
         return $"{base.SerializeForUpdate()},{_bonus},{_target},{_timesCompleted}";
+    }
+
+    public void RecordEventChecklist()
+    {
+        Console.Write("Mark a completion y/n? ");
+        string completion = Console.ReadLine();
+
+        if (completion.ToLower() == "y")
+        {
+            _timesCompleted += 1;
+            _earnedPoints = int.Parse(_stringPoints);
+            _totalPoints += _earnedPoints;
+            
+            Console.WriteLine($"Good job! {_earnedPoints} points added");
+            Console.WriteLine("Remember to save!");
+
+            if (_timesCompleted == _target)
+            {
+                _isComplete = true;
+                _totalPoints += _bonus;
+                
+                Console.WriteLine($"Good job! You earned {_bonus} bonus points");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Keep workin");
+        }
     }
 }
