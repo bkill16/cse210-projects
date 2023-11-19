@@ -72,6 +72,7 @@ public class Checklist : Goal
                 _totalPoints += _bonus;
                 
                 Console.WriteLine($"Good job! You earned {_bonus} bonus points");
+                Console.WriteLine("Remember to save!");
             }
         }
         else
