@@ -247,6 +247,9 @@ public class Goal
                 case "Simple":
                     ((Simple)selectedGoal).RecordEventSimple();
                     break;
+                case "Eternal":
+                    ((Eternal)selectedGoal).RecordEventEternal();
+                    break;
             }
         }
         else
