@@ -1,4 +1,0 @@
-140
-Simple:Marathon,Run a marathon,100,True
-Eternal:Scripture Study,Study for 10 minutes,10
-Checklist:Temple Work,Perform any ordinance,10,10,2,2
