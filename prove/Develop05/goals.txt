@@ -1,0 +1,5 @@
+800
+Checklist:Walk,Walk a mile,100,100,3,3,True
+Simple:Straight As,Have good grades at the end of the semester,100,True
+Eternal:Scripture Study,Study for 10 minutes,100
+Checklist:Veggies,Eat a vegetable,100,100,10,2,False

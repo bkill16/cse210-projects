@@ -34,22 +34,23 @@ public class Checklist : Goal
     {
         base.LoadGoalFromData(goalInfo);
 
-        if (goalInfo.Length == 5)
+        if (goalInfo.Length >= 7)
         {
             _bonus = int.Parse(goalInfo[3]);
             _target = int.Parse(goalInfo[4]);
             _timesCompleted = int.Parse(goalInfo[5]);
+            _isComplete = bool.Parse(goalInfo[6]);
         }
     }
 
     public override string Serialize()
     {
-        return $"{base.Serialize()},{_bonus},{_target},{_timesCompleted}";
+        return $"{base.Serialize()},{_bonus},{_target},{_timesCompleted},{_isComplete}";
     }
 
     public override string SerializeForUpdate()
     {
-        return $"{base.SerializeForUpdate()},{_bonus},{_target},{_timesCompleted}";
+        return $"{base.SerializeForUpdate()},{_bonus},{_target},{_timesCompleted},{_isComplete}";
     }
 
     public void RecordEventChecklist()
