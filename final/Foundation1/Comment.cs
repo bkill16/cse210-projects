@@ -1,7 +1,6 @@
 public class Comment {
     private string _commenter;
     private string _content;
-    private List<string> comments = new List<string>();
 
     public Comment(string commenter, string content)
     {
